@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- displays site properly based on user's device -->
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+
+    <title>Frontend Mentor | Newsletter sign-up form with success message</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+
+      @font-face {
+        font-family: "Roboto-Regular";
+        src: url('/assets/fonts/Roboto-Regular.ttf') format('truetype');
+      }
+
+      @font-face {
+        font-family: "Roboto-Bold";
+        src: url('/assets/fonts/Roboto-Bold.ttf') format('truetype');
+      }
+
+
+      :root {
+        --white: #FFFFFF;
+        --pink: #FF5478;
+        --purple: #36384D;
+        --purpleDark: #242845;
+        --orange: #FF673E;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Roboto-Regular";
+      }
+
+      body,
+      html {
+        background-color: var(--purple);
+      }
+
+      /* SCREEN FORM */
+      .form-container {
+        width: 650px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: var(--white);
+        padding: 15px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        border-radius: 25px;
+        gap: 2.5em;
+      }
+
+      .cl-img .img-desktop {
+        width: 100%;
+      }
+
+      .cl-img .img-mob {
+        display: none;
+      }
+
+      .cl-form {
+        width: 320px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 15px;
+        padding: 0 0 0 20px;
+      }
+
+      .cl-form h1 {
+        font-family: "Roboto-Bold";
+        color: var(--purpleDark);
+        font-size: 2.3em;
+      }
+
+      .cl-form p {
+        color: var(--purpleDark);
+        text-align: justify;
+        font-size: .76em;
+        font-weight: 600;
+      }
+
+      .cl-form .box-list {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+        margin: 10px 0;
+      }
+
+      .box-list .item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .item img {
+        width: 15px;
+      }
+
+      .cl-form .box-input {
+        width: 100%;
+      }
+
+      .cl-form input {
+        width: 100%;
+        padding: 14px;
+        border: none;
+        border: 1px solid rgba(0, 0, 0, 0.13);
+        border-radius: 7px;
+        outline: none;
+      }
+
+      .cl-form input[type='submit'] {
+        background-color: var(--purpleDark);
+        font-family: "Roboto-Bold";
+        color: var(--white);
+      }
+
+      .cl-form input[type='submit']:hover {
+        background: linear-gradient(45deg, #FF5478, #FF673E);
+      }
+
+      .cl-form input:focus {
+        border-color: rgba(0, 0, 0, .5);
+      }
+
+      .cl-form .p-email {
+        font-size: .6em;
+        font-family: "Roboto-Bold";
+        margin-bottom: 5px;
+      }
+
+      /* SCREEN SUCCESS */
+      .success-container {
+        width: 380px;
+        background-color: var(--white);
+        padding: 2.5em 2.8em;
+        border-radius: 25px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .success-container img {
+        width: 50px;
+      }
+
+      .success-container h1 {
+        color: var(--purpleDark);
+        font-family: "Roboto-Bold";
+        font-size: 2.8em;
+      }
+
+      .success-container p {
+        font-size: .8em;
+        color: var(--purpleDark);
+      }
+
+      .success-container input {
+        padding: 15px;
+        border-radius: 8px;
+        font-family: "Roboto-Bold";
+        background-color: var(--purpleDark);
+        color: var(--white);
+        border: none;
+      }
+
+      /* MEDIA QUERIES */
+      @media screen and (max-width: 992px) {}
+
+      @media screen and (max-width: 768px) {
+        main ul {
+          margin-left: 0;
+        }
+      }
+
+      @media screen and (max-width: 576px) {
+        .cl-img .img-desktop {
+          display: none;
+        }
+
+        .cl-img .img-mob {
+          display: block;
+          width: 100%;
+          height: 35vh;
+        }
+
+        .form-container {
+          width: auto;
+          position: relative;
+          top: 0;
+          left: 0;
+          transform: translate(0%, 0%);
+          background-color: var(--white);
+          padding: 0;
+          border-radius: 0;
+          gap: 0;
+          display: flex;
+          flex-direction: column-reverse;
+
+        }
+
+        .cl-form {
+          height: 65vh;
+          width: auto;
+          display: flex;
+          font-size: x-large;
+          flex-direction: column;
+          justify-content: space-evenly;
+          gap: 15px;
+          padding: 20px;
+        }
+
+
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <!-- Sign-up form start -->
+    <div class="form-container">
+      <div class="cl-form">
+        <h1>Stay updated!</h1>
+
+        <p>Join 60,000+ product managers receiving monthly updates on:</p>
+
+        <div class="box-list">
+          <div class="item">
+            <img src="assets/images/icon-list.svg" alt="">
+            <p>Product discovery and building what matters</p>
+          </div>
+          <div class="item">
+            <img src="assets/images/icon-list.svg" alt="">
+            <p>Measuring to ensure updates are a success</p>
+          </div>
+          <div class="item">
+            <img src="assets/images/icon-list.svg" alt="">
+            <p>And much more!</p>
+          </div>
+        </div>
+        <div class="box-input">
+          <p class="p-email">Email address</p>
+          <input class="email-input" type="email" placeholder="email@company.com">
+        </div>
+        <input class="btn-submit-form" type="submit" value="Subscribe to monthly newsletter">
+      </div>
+
+      <div class="cl-img">
+        <img class="img-desktop" src="assets/images/illustration-sign-up-desktop.svg" alt="">
+        <img class="img-mob" src="assets/images/illustration-sign-up-mobile.svg" alt="">
+      </div>
+    </div>
+
+    <div class="success-container">
+      <img src="assets/images/icon-list.svg" alt="icon">
+      <h1>Thanks for subscribing!</h1>
+      <p>A confirmation email has been sent to <strong id="email-name"></strong>. Please open it and click the button
+        inside to
+        confirm your subscription.</p>
+      <input type="button" value="Dismiss message">
+    </div>
+
+    <script>
+      // OCULTANDO A TELA DE FORMULÁRIO SUBMETIDO COM SUCESSO
+      let screen_success = document.querySelector('.success-container');
+      screen_success.style.display = 'none';
+
+      // PEGANDO VALOR DO INPUT DE EMAIL
+      let submit = document.querySelector('.btn-submit-form');
+      let email_txt = document.querySelector('.email-input');
+      // TROCA DE TELAS
+      let screen_form = document.querySelector('.form-container');
+
+      submit.addEventListener('click', () => {
+        if (!email_txt.value) {
+          alert('preencha o campo');
+        } else {
+          screen_form.style.display = 'none';
+          screen_success.style.display = 'flex';
+
+          // MOSTRANDO O EMAIL NA TELA DE FORMULÁRIO SUBMETIDO COM SUCESSO
+          let show_email = document.getElementById('email-name');
+          show_email.innerText = email_txt.value;
+        }
+      });
+
+
+    </script>
+    <!--
+    <div class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+      Coded by <a href="https://www.instagram.com/jakki_fx/">@JakkiFx</a>.
+    </div>
+-->
+  </body>
+
+</html>
